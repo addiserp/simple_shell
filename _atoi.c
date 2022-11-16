@@ -6,7 +6,7 @@
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
-int interactive(info_t* info)
+int interactive(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
@@ -17,7 +17,7 @@ int interactive(info_t* info)
  * @delim: the delimeter string
  * Return: 1 if true, 0 if false
  */
-int is_delim(char c, char* delim)
+int is_delim(char c, char *delim)
 {
 	while (*delim)
 		if (*delim++ == c)
@@ -45,7 +45,7 @@ int _isalpha(int c)
  *Return: 0 if no numbers in string, converted number otherwise
  */
 
-int _atoi(char* s)
+int _atoi(char *s)
 {
 	int i, o;
 
