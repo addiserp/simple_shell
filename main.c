@@ -1,26 +1,25 @@
 #include "shell.h"
 
 /**
- * main - entry point
- * @ac: arg count
- * @av: arg vector
- *
- * Return: 0 on success, 1 on error
+ * main - Simple Shell Project.
+ * @ac: main function parameter arg count
+ * @av:  main function parameter arg vector
+ * Return: 0 for success, 1 for error
  */
 int main(int ac, char **av)
 {
-	info_t info[] = { INFO_INIT };
-	int fd = 2;
+	info_t it[] = { INFO_INIT };
+	int id = 2;
 
 	asm("mov %1, %0\n\t"
 		"add $3, %0"
-		: "=r" (fd)
-		: "r" (fd));
+		: "=r" (id)
+		: "r" (id));
 
 	if (ac == 2)
 	{
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
+		id = open(av[1], O_RDONLY);
+		if (id == -1)
 		{
 			if (errno == EACCES)
 				exit(126);
@@ -35,10 +34,10 @@ int main(int ac, char **av)
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readfd = fd;
+		it->readfd = id;
 	}
-	populate_env_list(info);
-	read_history(info);
-	hsh(info, av);
+	populate_env_list(it);
+	read_history(it);
+	hsh(it, av);
 	return (EXIT_SUCCESS);
 }
